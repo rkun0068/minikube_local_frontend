@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
 
-export default function PodsTable() {
+const PodsTable = () => {
   const [PodsInfo, setRows] = React.useState([]);
   React.useEffect(() => {
     getPodsInfo();
@@ -35,7 +35,8 @@ export default function PodsTable() {
       });
   }
   return (
-    <TableContainer component={Paper}>
+
+      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -70,5 +71,7 @@ export default function PodsTable() {
         </TableBody>
       </Table>
     </TableContainer>
+
   );
-}
+};
+export default PodsTable
