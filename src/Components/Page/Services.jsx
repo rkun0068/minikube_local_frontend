@@ -15,8 +15,10 @@ import Paper from "@mui/material/Paper";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import BoardSide from "../Dashboard/BoardSide";
-import PodsTable from "../Table/PodsTable";
-import FilterBox from "../Dashboard/FilterBox";
+import FilterBox from '../Dashboard/FilterBox'
+import ServiceTable from "../Table/ServiceTable";
+
+
 
 const drawerWidth = 240;
 
@@ -67,7 +69,7 @@ const Drawer = styled(MuiDrawer, {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Pods() {
+export default function Services() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -75,11 +77,14 @@ export default function Pods() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+     
       <Box sx={{ display: "flex" }}>
+      
         <CssBaseline />
-
+       
         {/* Header */}
         <AppBar position="absolute" open={open}>
+     
           <Toolbar
             sx={{
               pr: "24px", // keep right padding when drawer closed
@@ -97,6 +102,7 @@ export default function Pods() {
             >
               <MenuIcon />
             </IconButton>
+           
             <Typography
               component="h1"
               variant="h6"
@@ -107,10 +113,13 @@ export default function Pods() {
               Kubernetes管理平台
             </Typography>
             <FilterBox></FilterBox>
+          
           </Toolbar>
+          
         </AppBar>
-
+       
         <Drawer variant="permanent" open={open}>
+        
           <Toolbar
             sx={{
               display: "flex",
@@ -123,10 +132,10 @@ export default function Pods() {
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
-
+          
           {/*  */}
           <Divider />
-
+          
           <BoardSide />
         </Drawer>
         <Box
@@ -147,7 +156,7 @@ export default function Pods() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <PodsTable />
+                  <ServiceTable />
                 </Paper>
               </Grid>
             </Grid>

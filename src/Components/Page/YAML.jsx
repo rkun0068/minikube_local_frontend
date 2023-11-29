@@ -15,8 +15,8 @@ import Paper from "@mui/material/Paper";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import BoardSide from "../Dashboard/BoardSide";
-import PodsTable from "../Table/PodsTable";
 import FilterBox from "../Dashboard/FilterBox";
+import YAML_Input from "../Input/YAML_Input";
 
 const drawerWidth = 240;
 
@@ -67,7 +67,7 @@ const Drawer = styled(MuiDrawer, {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Pods() {
+export default function Yaml() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -147,7 +147,7 @@ export default function Pods() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <PodsTable />
+                  <YAML_Input/>
                 </Paper>
               </Grid>
             </Grid>

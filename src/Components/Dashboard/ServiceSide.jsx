@@ -5,7 +5,9 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import { useNavigate } from "react-router";
 export default function WorkLoadSide() {
+  const navigate = useNavigate();
   return (
     <React.Fragment>
       <ListSubheader component="div" inset>
@@ -17,7 +19,7 @@ export default function WorkLoadSide() {
         </ListItemIcon>
         <ListItemText primary="Ingresses" />
       </ListItemButton>
-      <ListItemButton>
+      <ListItemButton onClick={() => navigate("/svcs")}>
         <ListItemIcon>
           <CloudQueueIcon />
         </ListItemIcon>

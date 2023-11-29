@@ -1,0 +1,12 @@
+/* SuccessAlter.css */
+.success-alter {
+    position: fixed;
+    top: 50%; /* 将 SuccessAlter 定位到页面垂直中央 */
+    left: 50%; /* 将 SuccessAlter 定位到页面水平中央 */
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* 使 SuccessAlter 在最顶层 */
+    width: 500px;
+    text-align: center;
+
+  }
+  
