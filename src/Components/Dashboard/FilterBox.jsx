@@ -26,7 +26,6 @@ export default function ComboBox() {
           (item) => item.metadata.name
         );
         setNamespaces(namespaceNames);
-        console.log(namespaceNames);
       })
       .catch((error) => {
         console.error("捕获错误信息:", error);

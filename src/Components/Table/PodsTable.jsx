@@ -7,12 +7,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
+import ContainersSelect from "./Containers";
 
 const PodsTable = () => {
   const [PodsInfo, setRows] = React.useState([]);
+
   React.useEffect(() => {
     getPodsInfo();
   }, []);
+
   function getPodsInfo() {
     axios
       .get(
@@ -23,20 +26,19 @@ const PodsTable = () => {
         const Pods_info = Response.data.result.items.map((item) => ({
           name: item.metadata.name,
           podIP: item.status.podIP,
-          labels: item.metadata.labels,
+          labels: item.metadata.labels || {}, // Ensure labels is an object
           node: item.spec.nodeName,
           status: item.status.phase,
         }));
         setRows(Pods_info);
-        console.log(Pods_info);
       })
       .catch((error) => {
         console.error("捕获错误信息：", error);
       });
   }
-  return (
 
-      <TableContainer component={Paper}>
+  return (
+    <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -45,6 +47,7 @@ const PodsTable = () => {
             <TableCell align="right">标签</TableCell>
             <TableCell align="right">节点</TableCell>
             <TableCell align="right">状态</TableCell>
+            <TableCell align="right">容器</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -58,20 +61,27 @@ const PodsTable = () => {
               </TableCell>
               <TableCell align="right">{row.podIP}</TableCell>
               <TableCell align="right">
-                {Object.entries(row.labels).map(([key, value]) => (
-                  <div key={key}>
-                    <strong>{key}:</strong> {value}
-                  </div>
-                ))}
+                {Object.keys(row.labels).length === 0 ? (
+                  "None"
+                ) : (
+                  Object.entries(row.labels).map(([key, value]) => (
+                    <div key={key}>
+                      <strong>{key}:</strong> {value}
+                    </div>
+                  ))
+                )}
               </TableCell>
               <TableCell align="right">{row.node}</TableCell>
               <TableCell align="right">{row.status}</TableCell>
+              <TableCell align="right">
+                <ContainersSelect pod_name={row.name} />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
-
   );
 };
-export default PodsTable
+
+export default PodsTable;

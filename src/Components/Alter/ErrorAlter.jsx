@@ -1,11 +1,13 @@
 import React from "react";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-function ErrorAlter() {
+import "../../css/Alter.css"
+function ErrorAlter({message}) {
   return (
-    <div>
+    <div className="alter">
       <Alert severity="error">
         <AlertTitle>Error</AlertTitle>
+        {message&&<p>{message}</p>}
       </Alert>
     </div>
   );
